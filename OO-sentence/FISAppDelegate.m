@@ -24,7 +24,7 @@
     NSLog(@"Words: %@",[sentence words]);
     NSLog(@"Contains word 'Zach' %hhd", [sentence containsWord:@"Zach"]);
     NSLog(@"Contains word 'Joe' %hhd", [sentence containsWord:@"Joe"]);
-    
+
     NSLog(@"Complete sentence: %@", [sentence stringFormat]);
     NSLog(@"Number of words: %@", [sentence numOfWords]);
     
@@ -34,6 +34,7 @@
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

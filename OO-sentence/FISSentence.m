@@ -12,11 +12,17 @@
 
 - (NSString *)stringFormat {
     
-    NSMutableString *fullSentence;
+    NSMutableString *fullSentence = [[NSMutableString alloc] init];
     
-    for (NSString *word in _words) {
+    for (NSInteger i = 0; i < [_words count]; i++) {
         
-        [fullSentence appendString:word];
+        [fullSentence appendString:_words[i]];
+        
+        if (i < [_words count] - 1)
+        {
+            [fullSentence appendString:@" "];
+        }
+
     }
     
     return fullSentence;
@@ -25,25 +31,32 @@
 
 - (NSNumber *)numOfWords {
 
-    return @([_words count]);
+    NSNumber *numberOfWords = @([_words count]);
+    return numberOfWords;
 }
 
 
 - (BOOL)containsWord:(NSString *)searchedWord {
     
-    if ([_words containsObject:searchedWord]) {
-        return YES;
-    }
-    
-    return NO;
+    return [_words containsObject:searchedWord];
+
 }
+
+//Alternative to the above using a for in loop
+//- (BOOL)containsWord:(NSString *)searchedWord {
+//    
+//    for (NSString *word in _words) {
+//        if ([word isEqualToString:searchedWord]) {
+//            return YES;
+//        }
+//    }
+//    
+//    return NO;
+//    
+//}
 
 
 - (NSMutableArray *)words {
-    
-    if (!_words) {
-        _words = [[NSMutableArray alloc] init];
-    }
     
     return _words;
 }
@@ -55,7 +68,7 @@
 
 - (BOOL)isProperSentence {
     
-    BOOL _isProperSentence = NO;
+    BOOL proper = NO;
     
     NSString *firstWord = [_words firstObject];
 
@@ -63,26 +76,27 @@
 
         NSString *lastWord = [_words lastObject];
         
-        NSCharacterSet *endOfSentenceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".!?"];
+        NSCharacterSet *endOfSentenceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".!?)\""];
         
         if ([endOfSentenceCharacterSet characterIsMember:[lastWord characterAtIndex:lastWord.length - 1]]) {
             
-            _isProperSentence = YES;
+            proper = YES;
         }
     }
     
     
-    return _isProperSentence;
+    return proper;
 }
 
 - (BOOL)isEqualToSentence:(NSArray *)otherSentence {
     
-    BOOL _isEqualToSentence = NO;
+    BOOL sentenceEquality = NO;
     
+    //two nil sentences would technically be 'equal' as well, but we have made a decision to exclude them for the purposes of this lab.
     if ([otherSentence count] == [_words count] && [_words count] > 0)
     {
         
-        _isEqualToSentence = YES;
+        sentenceEquality = YES;
         
         for (NSInteger i = 0; i < [otherSentence count]; i++) {
             
@@ -92,13 +106,13 @@
             
             if (![originalSentenceWordCaseAndPunctuationInsensitive isEqualToString:otherSentenceWordCaseAndPunctuationInsensitive])
             {
-                _isEqualToSentence = NO;
+                sentenceEquality = NO;
             }
         }
         
     }
     
-    return _isEqualToSentence;
+    return sentenceEquality;
 }
 
 
