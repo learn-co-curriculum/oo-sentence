@@ -7,15 +7,37 @@
 //
 
 #import "FISAppDelegate.h"
+#import "FISSentence.h"
 
 @implementation FISAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    FISSentence *sentence = [[FISSentence alloc] init];
+    NSArray *testArray = @[@"Zach",@"is",@"a",@"teacher!"];
+    NSArray *sameSentenceArray = @[@"zach",@"is",@"a",@"teacher"];
+    NSArray *differentSentenceArray = @[@"joe",@"is",@"a",@"teacher"];
+
+    [sentence setWords:[testArray mutableCopy]];
+    
+    NSLog(@"Words: %@",[sentence words]);
+    NSLog(@"Contains word 'Zach' %hhd", [sentence containsWord:@"Zach"]);
+    NSLog(@"Contains word 'Joe' %hhd", [sentence containsWord:@"Joe"]);
+    
+    NSLog(@"Complete sentence: %@", [sentence stringFormat]);
+    NSLog(@"Number of words: %@", [sentence numOfWords]);
+    
+    NSLog(@"Is Proper Sentence: %hhd", [sentence isProperSentence]);
+    NSLog(@"Is Equal To Same Sentence: %hhd", [sentence isEqualToSentence:sameSentenceArray]);
+    NSLog(@"Is Equal To Different Sentence: %hhd", [sentence isEqualToSentence:differentSentenceArray]);
+
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
