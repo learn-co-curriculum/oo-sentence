@@ -118,6 +118,8 @@
 			children = (
 				D8EC4E3419C64AE6002E0FA4 /* FISAppDelegate.h */,
 				D8EC4E3519C64AE6002E0FA4 /* FISAppDelegate.m */,
+				31B69E6719C76CC800D0A5AB /* FISSentence.h */,
+				31B69E6819C76CC800D0A5AB /* FISSentence.m */,
 				D8EC4E3719C64AE6002E0FA4 /* Images.xcassets */,
 				D8EC4E2C19C64AE6002E0FA4 /* Supporting Files */,
 			);
@@ -285,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8EC4E3219C64AE6002E0FA4 /* main.m in Sources */,
+				31B69E6919C76CC800D0A5AB /* FISSentence.m in Sources */,
 				D8EC4E3619C64AE6002E0FA4 /* FISAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
