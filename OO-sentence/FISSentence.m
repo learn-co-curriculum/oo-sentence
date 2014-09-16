@@ -84,7 +84,7 @@
 
         NSString *lastWord = [_words lastObject];
         
-        NSCharacterSet *endOfSentenceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".!?)\""];
+        NSCharacterSet *endOfSentenceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".!?"];
         
         if ([endOfSentenceCharacterSet characterIsMember:[lastWord characterAtIndex:lastWord.length - 1]])
         {
