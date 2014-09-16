@@ -21,6 +21,6 @@
 - (NSString *)stringFormat;
 
 - (BOOL)isProperSentence;
-- (BOOL)isEqualToSentence:(NSArray *)otherSentence;
+- (BOOL)isEqualToSentence:(FISSentence *)otherSentence;
 
 @end

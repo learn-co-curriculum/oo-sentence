@@ -97,25 +97,27 @@
     return isProper;
 }
 
-- (BOOL)isEqualToSentence:(NSArray *)otherSentence
+- (BOOL)isEqualToSentence:(FISSentence *)otherSentence
 {
-    
     BOOL sentenceEquality = NO;
     
     //two nil sentences would technically be 'equal' as well, but we have made a decision to exclude them for the purposes of this lab.
-    if ([otherSentence count] == [_words count] && [_words count] > 0)
+    if ([[otherSentence words] count] == [_words count] && [_words count] > 0)
     {
         
         sentenceEquality = YES;
         
-        for (NSInteger i = 0; i < [otherSentence count]; i++)
+        for (NSInteger i = 0; i < [[otherSentence words] count]; i++)
         {
             
             NSString *originalSentenceWordCaseAndPunctuationInsensitive = [[_words[i] lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]];
             
-            NSString *otherSentenceWordCaseAndPunctuationInsensitive = [[otherSentence[i] lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]];
+            NSString *otherSentenceWordCaseAndPunctuationInsensitive = [[[otherSentence words][i] lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]];
 
-            sentenceEquality = ![originalSentenceWordCaseAndPunctuationInsensitive isEqualToString:otherSentenceWordCaseAndPunctuationInsensitive];
+            if (![originalSentenceWordCaseAndPunctuationInsensitive isEqualToString:otherSentenceWordCaseAndPunctuationInsensitive])
+            {
+                sentenceEquality = NO;
+            };
         }
 
     }

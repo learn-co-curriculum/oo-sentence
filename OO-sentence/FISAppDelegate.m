@@ -20,7 +20,8 @@
     NSArray *differentSentenceArray = @[@"joe",@"is",@"a",@"teacher"];
 
     [sentence setWords:[testArray mutableCopy]];
-    
+
+    FISSentence *otherSentence = [[FISSentence alloc] init];
     NSLog(@"Words: %@",[sentence words]);
     NSLog(@"Contains word 'Zach' %hhd", [sentence containsWord:@"Zach"]);
     NSLog(@"Contains word 'Joe' %hhd", [sentence containsWord:@"Joe"]);
@@ -29,8 +30,13 @@
     NSLog(@"Number of words: %@", [sentence numOfWords]);
     
     NSLog(@"Is Proper Sentence: %hhd", [sentence isProperSentence]);
-    NSLog(@"Is Equal To Same Sentence: %hhd", [sentence isEqualToSentence:sameSentenceArray]);
-    NSLog(@"Is Equal To Different Sentence: %hhd", [sentence isEqualToSentence:differentSentenceArray]);
+    
+    [otherSentence setWords:[sameSentenceArray mutableCopy]];
+    NSLog(@"Is Equal To Same Sentence: %hhd", [sentence isEqualToSentence:otherSentence]);
+    
+    [otherSentence setWords:[differentSentenceArray mutableCopy]];
+
+    NSLog(@"Is Equal To Different Sentence: %hhd", [sentence isEqualToSentence:otherSentence]);
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
