@@ -10,11 +10,13 @@
 
 @implementation FISSentence 
 
-- (NSString *)stringFormat {
+- (NSString *)stringFormat
+{
     
     NSMutableString *fullSentence = [[NSMutableString alloc] init];
     
-    for (NSInteger i = 0; i < [_words count]; i++) {
+    for (NSInteger i = 0; i < [_words count]; i++)
+    {
         
         [fullSentence appendString:_words[i]];
         
@@ -29,14 +31,16 @@
 }
 
 
-- (NSNumber *)numOfWords {
+- (NSNumber *)numOfWords
+{
 
     NSNumber *numberOfWords = @([_words count]);
     return numberOfWords;
 }
 
 
-- (BOOL)containsWord:(NSString *)searchedWord {
+- (BOOL)containsWord:(NSString *)searchedWord
+{
     
     return [_words containsObject:searchedWord];
 
@@ -56,39 +60,45 @@
 //}
 
 
-- (NSMutableArray *)words {
+- (NSMutableArray *)words
+{
     
     return _words;
 }
 
-- (void)setWords:(NSMutableArray *)words {
+- (void)setWords:(NSMutableArray *)words
+{
 
     _words = words;
 }
 
-- (BOOL)isProperSentence {
+- (BOOL)isProperSentence
+{
     
-    BOOL proper = NO;
+    BOOL isProper = NO;
     
     NSString *firstWord = [_words firstObject];
 
-    if ( [[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[firstWord characterAtIndex:0]]) {
+    if ( [[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[firstWord characterAtIndex:0]])
+    {
 
         NSString *lastWord = [_words lastObject];
         
         NSCharacterSet *endOfSentenceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".!?)\""];
         
-        if ([endOfSentenceCharacterSet characterIsMember:[lastWord characterAtIndex:lastWord.length - 1]]) {
+        if ([endOfSentenceCharacterSet characterIsMember:[lastWord characterAtIndex:lastWord.length - 1]])
+        {
             
-            proper = YES;
+            isProper = YES;
         }
     }
     
     
-    return proper;
+    return isProper;
 }
 
-- (BOOL)isEqualToSentence:(NSArray *)otherSentence {
+- (BOOL)isEqualToSentence:(NSArray *)otherSentence
+{
     
     BOOL sentenceEquality = NO;
     
@@ -98,18 +108,16 @@
         
         sentenceEquality = YES;
         
-        for (NSInteger i = 0; i < [otherSentence count]; i++) {
+        for (NSInteger i = 0; i < [otherSentence count]; i++)
+        {
             
             NSString *originalSentenceWordCaseAndPunctuationInsensitive = [[_words[i] lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]];
             
             NSString *otherSentenceWordCaseAndPunctuationInsensitive = [[otherSentence[i] lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]];
-            
-            if (![originalSentenceWordCaseAndPunctuationInsensitive isEqualToString:otherSentenceWordCaseAndPunctuationInsensitive])
-            {
-                sentenceEquality = NO;
-            }
+
+            sentenceEquality = ![originalSentenceWordCaseAndPunctuationInsensitive isEqualToString:otherSentenceWordCaseAndPunctuationInsensitive];
         }
-        
+
     }
     
     return sentenceEquality;
