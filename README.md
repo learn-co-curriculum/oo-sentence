@@ -1,7 +1,4 @@
----
-tags: beginner, instance-variables, oop, methods
-languages: objc
----
+
 
 # OO-Sentence
 
