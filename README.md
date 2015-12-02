@@ -18,3 +18,5 @@ Let's represent a sentence in code.
 
   1. Write a method called `isProperSentence` that ensures that the first word is capitalized and the last word as a punctuation mark.
   2. Write a method called `isEqualToSentence` that takes in another `FISSentence` object and returns a YES or NO if the sentences are the same. Be a bit loose with that definition. If the capitalization or punctuation is a bit different that is fine.
+
+<a href='https://learn.co/lessons/oo-sentence' data-visibility='hidden'>View this lesson on Learn.co</a>
